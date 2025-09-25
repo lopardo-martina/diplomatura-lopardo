@@ -1,0 +1,31 @@
+
+body { 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #ddcee0;
+    margin: 20px
+}
+
+h1 {
+    color: #461046;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero img {
+    width: 250px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+section {
+    background-color: white;
+    padding-left: 30px;
+    margin: 25px 30px 0 30px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+section p, ul{
+    color: #474747;
+}
