@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.ejercicio {
+  border: 2px solid #333;
+  padding: 0px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+}
+
+.caja1, .caja2, .caja3 {
+  color: white;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+
+/* Ejercicio 1 */
+.ejercicio1 {
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+.caja1 {
+    background-color: red;
+}
+
+/* Ejercicio 2*/
+.ejercicio2 {
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.caja2 {
+    background-color: blue;
+}
+
+/* Ejercicio 3*/
+.ejercicio3 {
+  justify-content: space-between;
+  align-items: flex-end;
+  height: auto;
+  width: auto;
+}
+
+.caja3 {
+    background-color: green;
+}
