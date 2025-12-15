@@ -161,6 +161,28 @@ body {
   margin-bottom: 16px;
 }
 
+.card-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card-first-subtitle {
+  color: var(--gris-obscuro);
+  font-family: var(--font-heading);
+}
+
+.card-second-subtitle {
+  color: var(--verde-obscuro);
+  font-size: 18px;
+}
+
+.card-text {
+  font-family: var(--font-body);
+  color: var(--gris-obscuro);
+  font-size: 14px;
+}
+
 
 
 /* Footer */
