@@ -10,11 +10,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header>
-          <div className="container nav-content holder">
-            <div className="logo">BAirWays</div>
-          </div>
-        </header>
         <Nav />
         
         {children}

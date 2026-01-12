@@ -1,4 +1,4 @@
-import "@/styles/tip.css";
+import "@/styles/destino.css";
 import DestinoItem from "@/components/destinoItem";
 
 export const metadata = {
@@ -9,6 +9,7 @@ export const metadata = {
 
 export default function Destinos() {
     return (
+        <section id="destinos" className="buenos-aires">
             <div className="container holder">
                 <div className="section-header">
                     <h2>Lugares para visitar</h2>
@@ -19,5 +20,6 @@ export default function Destinos() {
                     <DestinoItem />
                 </div>
             </div>
+        </section>
         )
     }

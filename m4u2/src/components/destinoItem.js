@@ -1,7 +1,7 @@
 export default async function DestinoItem(){
     return (
         <div className="destino-card card">
-            <img src="img/ecoparque.jpg" className="destino-img" alt="Ecoparque Buenos Aires" />
+            <img src="/img/ecoparque.jpg" className="destino-img" alt="Ecoparque Buenos Aires" />
             <div className="card-body destino-content">
                 <span className="tipo-destino">Parque</span>
                 <h3>Ecoparque</h3>

@@ -9,20 +9,22 @@ export const metadata = {
 
 export default function Contacto() {
     return (
-        <div className="holder">
-            <div className="section-header">
-                <h2> Contacto </h2>
-            </div>
-            <div className="contacto-container">
-                <ContactForm />
-    
-                <div className="info">
-                    <h3>Información de Contacto</h3>
-                    <p><i className="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
-                    <p><i className="fas fa-phone"></i> Teléfono: +54 11 1234-5678</p>
-                    <p><i className="fas fa-envelope"></i> Email: contacto@BAirWays.com </p>
+        <section className="contacto">
+            <div className="holder">
+                <div className="section-header">
+                    <h2> Contacto </h2>
+                </div>
+                <div className="contacto-container">
+                    <ContactForm />
+        
+                    <div className="info">
+                        <h3>Información de Contacto</h3>
+                        <p><i className="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+                        <p><i className="fas fa-phone"></i> Teléfono: +54 11 1234-5678</p>
+                        <p><i className="fas fa-envelope"></i> Email: contacto@BAirWays.com </p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

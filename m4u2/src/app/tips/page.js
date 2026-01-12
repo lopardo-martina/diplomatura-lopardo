@@ -9,16 +9,18 @@ export const metadata = {
 
 export default function Tips() {
     return (
-        <div className="holder">
-            <div className="section-header">
-                <h2>Tips para viajar de forma Sustentable</h2>
-                <p>Pequeñas acciones que hacen una gran diferencia.</p>
-            </div>
+        <section className="tips">
+            <div className="holder">
+                <div className="section-header">
+                    <h2>Tips para viajar de forma Sustentable</h2>
+                    <p>Pequeñas acciones que hacen una gran diferencia.</p>
+                </div>
 
-            <div className="tips-grid">
-                <TipItem />
-                
+                <div className="tips-grid">
+                    <TipItem />
+                    
+                </div>
             </div>
-        </div>
+        </section>
     )
 }
