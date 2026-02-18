@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         {children}
       
         <footer>
-          <p>Diseñado por Martina Lopardo - &copy;2025</p>
+          <p>Diseñado por Martina Lopardo - &copy;2026</p>
         </footer>
       </body>
     </html>
