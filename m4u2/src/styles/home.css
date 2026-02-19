@@ -180,10 +180,15 @@
   opacity: 0.7;
 }
 
-.ba-grid,
-.tips-grid {
+.ba-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
 

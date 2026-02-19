@@ -1,0 +1,384 @@
+:root {
+
+    /*colores principales*/
+    --verde-obscuro: #3c6e47;
+    --verde-claro: #77a96f;
+    --celeste-claro: #a9c5d0ae;
+    --azul-claro: #92baf2;
+    --azul: #1c65ca;
+    --azul-obscuro: #0b2c5c;
+    --arena: #efe3d4;
+    --gris-claro: #ecedee;
+    --gris-obscuro: #2e363c;
+
+    /*colores para botones*/
+    --celeste: #63a9e6;
+    --celeste-hover: #377CC7;
+    --texto-boton: #FFFFFF;
+
+    /*colores para cards*/
+    --card-arena: #f6efdd;
+
+
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --transition: all 0.3s ease;
+
+    --input-border: #d1dce8;
+    --input-focus: #1c65ca;
+    --label-color: #4a5568;
+    --shadow-card: 0 8px 32px rgba(11, 44, 92, .10), 0 2px 8px rgba(11, 44, 92, .06);
+}
+
+
+.admin-page {
+    flex: 1;
+    padding: 80px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--celeste-claro);
+}
+
+.badge {
+    align-self: flex-start;
+    background: #0b2b5c6e;
+    color: var(--azul-obscuro);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 12px rgba(28, 101, 202, .25);
+}
+
+/* Admin Card  */
+.admin-card {
+    background: var(--texto-boton);
+    border-radius: 20px;
+    box-shadow: var(--shadow-card);
+    width: 100%;
+    max-width: 660px;
+    overflow: hidden;
+    animation: slideUp .45s cubic-bezier(.22, .68, 0, 1.2) both;
+    margin-bottom: 50px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-card-header {
+    background: var(--azul-obscuro);
+    padding: 32px 40px 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-card-header h1 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--texto-boton);
+}
+
+.admin-card-header p {
+    color: rgba(255, 255, 255, .65);
+    font-size: .9rem;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+/*   Form Body*/
+.admin-card-body {
+    padding: 36px 30px 30px;
+}
+
+.form-destino {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.campo-full {
+    grid-column: 1 / -1;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--label-color);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.campo input {
+    font-family: var(--font-body);
+    font-size: .95rem;
+    width: 100%;
+    color: var(--gris-obscuro);
+    border: 1.5px solid var(--input-border);
+    border-radius: 14px;
+    padding: 11px 16px;
+    background: #0b2b5c1e;
+    outline: none;
+    transition: var(--transition);
+}
+
+.campo input::placeholder {
+    color: #adb5c0;
+}
+
+.campo input:hover {
+    border-color: #b0c4e8;
+}
+
+.campo input:focus {
+    border-color: var(--azul);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(28, 101, 202, .12);
+}
+
+/* icon prefix wrapper */
+.input-group {
+    position: relative;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: .95rem;
+    pointer-events: none;
+}
+
+.input-group input {
+    padding-left: 38px;
+}
+
+
+/*   Submit Button  */
+.btn-submit {
+    display: inline-block;
+    padding: 14px 0px;
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #0b2b5c6c;
+    color: var(--azul-obscuro);
+    border: 1px solid var(--azul-obscuro);
+}
+
+.btn-submit:hover {
+    background-color: var(--azul-obscuro);
+    transform: translateY(-2px);
+    color: var(--texto-boton);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+
+
+.destino-linea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+.nombre-destino{
+    align-self: flex-start;
+}
+
+.botones-destino {
+    align-self: flex-end;
+}
+
+.botones-destino button {
+    display: inline-block;
+    padding: 5px 12px;
+    margin-left: 15px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    font-family: var(--font-heading);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.botones-destino button:hover {
+    transform: translateY(-2px);
+    color: var(--texto-boton);
+}
+
+
+/*   eliminar Button  */
+.btn-eliminar {
+    background-color: #a52020da;
+    color: var(--texto-boton);
+    border: 1px solid #a52020da;
+}
+
+.btn-eliminar:hover {
+    background-color: #a52020;
+}
+
+/*   editar Button  */
+.btn-editar {
+    background-color: #0b2b5cd3;
+    color: var(--texto-boton);
+    border: 1px solid var(--azul-obscuro);
+}
+
+.btn-editar:hover {
+    background-color: var(--azul-obscuro);
+}
+
+/* form para editar destino */
+.form-editar {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+    padding: 20px;
+    /*animation: desplegar .35s ease forwards;*/
+}
+
+.form-editar .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.form-editar label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--label-color);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+.form-editar input {
+    font-family: var(--font-body);
+    font-size: 14px;
+    width: 100%;
+    color: var(--azul-obscuro);
+    border: 1.5px solid #0b2b5c59;
+    border-radius: 14px;
+    padding: 8px 20px;
+    background: #0b2b5c13;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-group input {
+    padding-left: 25px;
+    padding-right: 5px;
+}
+
+.form-editar input:hover {
+    border-color: var(--azul-obscuro);
+}
+
+.form-editar input:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(28, 101, 202, .12);
+}
+
+
+.btn-guardar {
+    display: inline-block;
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding: 5px 50px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    font-family: var(--font-heading);
+    transition: var(--transition);
+    cursor: pointer;
+    background-color: var(--verde-claro);
+    color: var(--texto-boton);
+    border: none;
+}
+
+
+@keyframes desplegar {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+        max-height: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 600px;
+    }
+}
+
+/*   Responsive  */
+@media (max-width: 560px) {
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        padding: 6px 8px;
+        font-size: .9rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .admin-card-header {
+        padding: 24px 24px 20px;
+    }
+
+    .admin-card-body {
+        padding: 28px 24px 32px;
+    }
+
+    .form-destino {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-full {
+        grid-column: 1;
+    }
+
+    .btn-submit {
+        grid-column: 1;
+    }
+}
