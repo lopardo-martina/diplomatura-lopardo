@@ -268,3 +268,19 @@
   color: var(--verde-obscuro);
   margin-bottom: 16px;
 }
+
+
+/* RESPONSIVE – PANTALLAS MÁS CHICAS */
+@media (max-width: 992px) {
+  .ba-grid,
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ba-grid,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
