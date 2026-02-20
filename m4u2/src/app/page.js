@@ -111,7 +111,7 @@ export default function Home() {
               <TipItem
                 key={tip.id}
                 nombre={tip.titulo}
-                //subtitulo={tip.subtitulo}
+                subtitulo={tip.subtitulo}
                 texto={tip.descripcion}
               />
             ))}
