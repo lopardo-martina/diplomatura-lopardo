@@ -1,0 +1,16 @@
+﻿nombre;descripcion;imagen;tiempo;precio;tipo_id
+Ecoparque;Espacio de conservación y educación ambiental. Antiguo zoológico transformado en centro ecológico.;ecoparque.jpg;2-3 horas;0;1
+Museo de Ciencias Naturales Bernardino Rivadavia;El museo de ciencias naturales más antiguo de Argentina. Colecciones de paleontología, zoología y antropología.;museo-cs-naturales.jpg;2-3 horas;1;2
+Museo Histórico Nacional;Historia argentina desde la conquista española hasta principios del siglo XX. Objetos, pinturas y documentos históricos.;museo-historico-nacional.jpg;1-2 horas;0;2
+Teatro Colón;Uno de los mejores teatros de ópera del mundo. Arquitectura impresionante y acústica excepcional.;teatro-colon.jpg;1 hora;28000;6
+El Ateneo Grand Splendid;Librería ubicada en un antiguo teatro. Considerada una de las más bellas del mundo.;ateneo.jpg;1 hora;0;3
+Obelisco;Monumento histórico y símbolo de Buenos Aires. Ubicado en la intersección de las avenidas más importantes.;obelisco.jpg;30 minutos;0;4
+Jardín Japonés;El jardín japonés más grande fuera de Japón. Naturaleza, carpas koi, puentes y arquitectura tradicional japonesa.;jardin-japones.jpeg;1-2 horas;1;1
+Parque Tres de Febrero;También conocido como Bosques de Palermo. Amplios espacios verdes, lagos, rosedal y actividades al aire libre.;parque-tres-de-febrero.jpg;2-4 horas;0;1
+Casa Rosada;Sede del Poder Ejecutivo argentino. Icónico edificio rosado en la Plaza de Mayo con museo y visitas guiadas.;Casa_Rosada.jpg;1 hora;0;4
+Caminito - La Boca;Calle museo con casas de chapa pintadas. Icono cultural de Buenos Aires.;caminito.jpg;1-3 horas;0;4
+MALBA - Museo de Arte Latinoamericano;Arte latinoamericano de los siglos XX y XXI. Colección permanente y exposiciones temporales.;malba.jpg;2-3 horas;10000;2
+Jardín Botanico;7 hectáreas con más de 5.500 especies de plantas. Invernaderos y jardines temáticos.;jardin-botanico.jpg;1-2 horas;0;1
+Museo Nacional de Bellas Artes;El Museo Nacional de Bellas Artes es una de las instituciones públicas de arte más importantes de Argentina. Alberga un patrimonio sumamente diverso, que incluye más de 12 000 piezas, entre pinturas, esculturas, dibujos, grabados, textiles y objetos.;mueo-bellas-artes.jpg;2- horas;1;2
+Planetario Galileo Galilei;El Planetario es el principal centro de divulgación de astronomía de la ciudad. Cuenta con una sala de proyección semiesférica con trescientas sesenta butacas reclinables y una cúpula de veinte metros de diámetro donde se reproducen cerca de 8.900 estrellas, planetas y satélites del universo;planetario.jpg;1 hora;6000;2
+Tango Porteño;El teatro Tango Porteño de Buenos Aires es un lugar perfecto para disfrutar de un buen espectáculo tanguero con una rica cena argentina;tango-porteño.jpg;2-4 horas;1;6

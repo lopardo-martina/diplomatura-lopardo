@@ -13,11 +13,11 @@ export default function Nav() {
             <div className="container nav-content holder">
                 <div className="logo">BAirWays</div>
                 <ul className="nav-links" id="navLinks">
-                    <li><a href="/" className={isActive("/") ? 'activo' : ''}>Inicio</a></li>
-                    <li><a href="/destinos" className={isActive("/destinos") ? 'activo' : ''}>Destinos</a></li>
+                    <li><Link href="/" className={isActive("/") ? 'activo' : ''}>Inicio</Link></li>
+                    <li><Link href="/destinos" className={isActive("/destinos") ? 'activo' : ''}>Destinos</Link></li>
                 
-                    <li><a href="/tips" className={isActive("/tips") ? 'activo' : ''}>Tips</a></li>
-                    <li><a href="/contacto" className={isActive("/contacto") ? 'activo' : ''}>Contacto</a></li>
+                    <li><Link href="/tips" className={isActive("/tips") ? 'activo' : ''}>Tips</Link></li>
+                    <li><Link href="/contacto" className={isActive("/contacto") ? 'activo' : ''}>Contacto</Link></li>
                 </ul>
             </div>
         </nav>

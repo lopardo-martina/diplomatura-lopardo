@@ -42,7 +42,7 @@ export default function Destinos() {
               nombre={destino.nombre}
               texto={destino.descripcion}
               imagen={`/img/${destino.imagen}`}
-              tipo_destino={destino.tipo_destino}
+              tipo_destino={destino.tipo_nombre}
               tiempo={destino.tiempo}
               precio={destino.precio}
             />

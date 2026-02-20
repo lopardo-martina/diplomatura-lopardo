@@ -10,7 +10,7 @@ export default function Admin() {
         nombre: "",
         descripcion: "",
         imagen: "",
-        tipo_destino: "",
+        tipo_nombre: "",
         tiempo: "",
         precio: ""
     });
@@ -29,7 +29,7 @@ export default function Admin() {
         nombre: "",
         descripcion: "",
         imagen: "",
-        tipo_destino: "",
+        tipo_nombre: "",
         tiempo: "",
         precio: ""
     });
@@ -39,7 +39,7 @@ export default function Admin() {
             nombre: destino.nombre,
             descripcion: destino.descripcion,
             imagen: destino.imagen,
-            tipo_destino: destino.tipo_destino,
+            tipo_nombre: destino.tipo_nombre,
             tiempo: destino.tiempo,
             precio: destino.precio
         });
@@ -52,7 +52,7 @@ export default function Admin() {
             nombre: destino.nombre || "",
             descripcion: destino.descripcion || "",
             imagen: destino.imagen || "",
-            tipo_destino: destino.tipo_destino || "",
+            tipo_nombre: destino.tipo_nombre || "",
             tiempo: destino.tiempo || "",
             precio: destino.precio || ""
         });
@@ -132,7 +132,7 @@ export default function Admin() {
             nombre: "",
             descripcion: "",
             imagen: "",
-            tipo_destino: "",
+            tipo_nombre: "",
             tiempo: "",
             precio: ""
         });
@@ -261,7 +261,7 @@ export default function Admin() {
 
                                     <div className="campo">
                                         <label htmlFor="tipo_destino">Tipo de destino</label>
-                                        <input name="tipo_destino" value={formEditar.tipo_destino} onChange={handleChangeEditar} />
+                                        <input name="tipo_destino" value={formEditar.tipo_nombre} onChange={handleChangeEditar} />
                                     </div>
 
                                     <div className="campo campo-full">

@@ -1,8 +1,9 @@
 /* Contacto Section */
 
-.contacto{
-    background-color: var(--celeste-claro);
-    padding: 80px 0;
+.contacto {
+  background-color: var(--celeste-claro);
+  padding: 80px 0;
+  flex: 1;
 }
 
 .section-header {

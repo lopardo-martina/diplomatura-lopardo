@@ -42,8 +42,8 @@ export default function Home() {
           <h1 className="hero-title">Descubre Buenos Aires de forma sustentable</h1>
           <p className="hero-subtitle">Conecta con la naturaleza, explora con conciencia y viaja responsablemente</p>
           <div className="hero-buttons">
-            <Link href="/destinos" className="btn primer-btn">Destinos Sustentables</Link>
-            <Link href="/buenos-aires" className="btn segundo-btn">Explorar Buenos Aires</Link>
+            <Link href="/tips" className="btn primer-btn">Conocer Tips</Link>
+            <Link href="/destinos" className="btn segundo-btn">Explorar Buenos Aires</Link>
           </div>
         </div>
       </section>
@@ -85,14 +85,14 @@ export default function Home() {
                 nombre={destino.nombre}
                 texto={destino.descripcion}
                 imagen={`/img/${destino.imagen}`}
-                tipo_destino={destino.tipo_destino}
+                tipo_destino={destino.tipo_nombre}
                 tiempo={destino.tiempo}
                 precio={destino.precio}
               />
             ))}
           </div>
           <div className="section-buttons">
-            <a href="/destinos" className="btn tercer-btn">Ver más destinos</a>
+            <Link href="/destinos" className="btn tercer-btn">Ver más destinos</Link>
           </div>
         </div>
       </section>
