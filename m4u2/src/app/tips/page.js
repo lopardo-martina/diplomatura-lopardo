@@ -37,8 +37,10 @@ export default function Tips() {
           {tips.map((tip) => (
             <TipItem
               key={tip.id}
-              nombre={tip.titulo}
-              texto={tip.descripcion}
+              titulo={tip.titulo}
+              subtitulo={tip.subtitulo}
+              descripcion={tip.descripcion}
+              icono_clase={tip.icono_clase}
             />
           ))}
         </div>

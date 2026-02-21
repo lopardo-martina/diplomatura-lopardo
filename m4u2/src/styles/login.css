@@ -1,0 +1,77 @@
+/*  LOGIN PAGE  */
+
+.admin-page {
+    padding: 80px 24px 80px;
+    background-color: var(--celeste-claro);
+    flex: 1;
+}
+
+.login-container {
+    max-width: 420px;
+    margin: 180px auto;
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    animation: slideUp .45s cubic-bezier(.22,.68,0,1.2) both;
+}
+
+.login-container h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--azul-obscuro);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ===== FORM ===== */
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* ===== INPUTS ===== */
+
+.login-container input {
+    font-family: var(--font-body);
+    font-size: .95rem;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--input-border);
+    background: #0b2b5c1e;
+    outline: none;
+    transition: var(--transition);
+}
+
+.login-container input:hover {
+    border-color: #b0c4e8;
+}
+
+.login-container input:focus {
+    border-color: var(--azul);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(28, 101, 202, .12);
+}
+
+/* ===== BOTÓN ===== */
+
+.login-container button {
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: var(--azul-obscuro);
+    color: var(--texto-boton);
+    transition: var(--transition);
+}
+
+.login-container button:hover {
+    background-color: var(--azul);
+    transform: translateY(-2px);
+}

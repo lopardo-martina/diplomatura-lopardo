@@ -1,12 +1,12 @@
-export default function TipItem({nombre, subtitulo, texto}) {
+export default function TipItem({titulo, subtitulo, descripcion, icono_clase}) {
     return (
         <div className="tip-card card">
             <div className="card-body">
-                <i className="fa-solid fa-bus card-title"></i>
-                <h3 className="card-first-subtitle card-subtitle mb-2 text-body-secondary">{nombre}</h3>
+                <i className={`${icono_clase} tip-icon`}></i>
+                <h3 className="card-first-subtitle card-subtitle mb-2 text-body-secondary">{titulo}</h3>
                 <h5 className="card-subtitle card-second-subtitle">{subtitulo}</h5>
-                <p className="card-text">{texto}</p>
+                <p className="card-text">{descripcion}</p>
             </div>
         </div>
     ) 
-}
+} 

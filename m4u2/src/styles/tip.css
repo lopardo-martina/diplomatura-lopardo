@@ -30,7 +30,8 @@
 .tips-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 30px;
+  margin: 5px 30px;
 }
 
 .card {

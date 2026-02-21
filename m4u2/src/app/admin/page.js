@@ -1,32 +1,46 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "@/styles/admin.css";
 
 export default function Admin() {
+
+    const router = useRouter();
+    useEffect(() => {
+        fetch("http://localhost:3001/admin/panel", {
+            credentials: "include"
+        })
+            .then(res => {
+                if (res.status === 401) {
+                    router.push("/admin/login");
+                }
+            });
+    }, []);
 
     // Estado para manejar el formulario Destino
     const [formDestino, setFormDestino] = useState({
         nombre: "",
         descripcion: "",
         imagen: "",
-        tipo_nombre: "",
+        tipo_id: "",
         tiempo: "",
         precio: ""
     });
-    
+
     const handleChangeDestino = (e) => {
         setFormDestino({
             ...formDestino,
             [e.target.name]: e.target.value
         });
     };
-    
+
     // Estado para manejar el formulario Destino
     const [formTips, setFormTips] = useState({
         titulo: "",
         subtitulo: "",
-        texto: ""
+        descripcion: "",
+        icono_id: ""
     });
 
     const handleChangeTips = (e) => {
@@ -43,7 +57,7 @@ export default function Admin() {
         nombre: "",
         descripcion: "",
         imagen: "",
-        tipo_nombre: "",
+        tipo_id: "",
         tiempo: "",
         precio: ""
     });
@@ -53,7 +67,7 @@ export default function Admin() {
             nombre: destino.nombre,
             descripcion: destino.descripcion,
             imagen: destino.imagen,
-            tipo_nombre: destino.tipo_nombre,
+            tipo_id: destino.tipo_id,
             tiempo: destino.tiempo,
             precio: destino.precio
         });
@@ -61,12 +75,12 @@ export default function Admin() {
     };
 
     const iniciarEdicionDestino = (destino) => {
-        setEditandoId(destino.id);
+        setEditandoDestinoId(destino.id);
         setFormEditarDestino({
             nombre: destino.nombre || "",
             descripcion: destino.descripcion || "",
             imagen: destino.imagen || "",
-            tipo_nombre: destino.tipo_nombre || "",
+            tipo_id: destino.tipo_id || "",
             tiempo: destino.tiempo || "",
             precio: destino.precio || ""
         });
@@ -85,6 +99,7 @@ export default function Admin() {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify(formEditarDestino)
         });
 
@@ -92,20 +107,35 @@ export default function Admin() {
         obtenerDestinos();
     };
 
+    // para seleccionar el tipo de destino
+    const [tiposDestino, setTiposDestino] = useState([]);
+
+    const obtenerTipos = () => {
+        fetch("http://localhost:3001/api/tipos-destino")
+            .then(res => res.json())
+            .then(data => setTiposDestino(data));
+    };
+
+    useEffect(() => {
+        obtenerTipos();
+    }, []);
+
 
     // para editar Tips
     const [editandoTipsId, setEditandoTipsId] = useState(null);
     const [formEditarTips, setFormEditarTips] = useState({
         titulo: "",
         subtitulo: "",
-        texto: ""
+        descripcion: "",
+        icono_id: ""
     });
 
     const editarTips = (tips) => {
         setFormTips({
             titulo: tips.titulo,
             subtitulo: tips.subtitulo,
-            texto: tips.texto,
+            descripcion: tips.descripcion,
+            icono_clase: tips.icono_clase
         });
         setEditandoTipsId(tips.id);
     };
@@ -115,7 +145,8 @@ export default function Admin() {
         setFormEditarTips({
             titulo: tips.titulo || "",
             subtitulo: tips.subtitulo || "",
-            texto: tips.texto || "",
+            descripcion: tips.descripcion || "",
+            icono_id: tips.icono_id || ""
         });
     };
 
@@ -129,6 +160,7 @@ export default function Admin() {
     const actualizarTips = async (id) => {
         await fetch(`http://localhost:3001/api/tips/${id}`, {
             method: "PUT",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -139,6 +171,17 @@ export default function Admin() {
         obtenerTips();
     };
 
+    // para seleccionar iconos
+    const [iconos, setIconos] = useState([]);
+    const obtenerIconos = () => {
+        fetch("http://localhost:3001/api/iconos")
+            .then(res => res.json())
+            .then(data => setIconos(data));
+    };
+
+    useEffect(() => {
+        obtenerIconos();
+    }, []);
 
 
     //para eliminar un destino
@@ -159,13 +202,14 @@ export default function Admin() {
         if (!confirmacion) return;
 
         await fetch(`http://localhost:3001/api/destinos/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: "include"
         });
 
         obtenerDestinos(); // refresca lista
     };
 
-    
+
     //para eliminar un tip
     const [tips, setTips] = useState([]);
 
@@ -183,14 +227,16 @@ export default function Admin() {
         const confirmacion = confirm("¿Seguro que querés eliminar este tip?");
         if (!confirmacion) return;
 
-        await fetch(`http://localhost:3001/api/tip/${id}`, {
-            method: "DELETE"
+        await fetch(`http://localhost:3001/api/tips/${id}`, {
+            method: "DELETE",
+            credentials: "include"
         });
 
         obtenerTips(); // refresca lista
     };
 
 
+    //submit para crear o editar destino
     const handleSubmitDestino = async (e) => {
         e.preventDefault();
 
@@ -203,6 +249,7 @@ export default function Admin() {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify(formDestino)
         });
 
@@ -217,7 +264,7 @@ export default function Admin() {
             nombre: "",
             descripcion: "",
             imagen: "",
-            tipo_nombre: "",
+            tipo_id: "",
             tiempo: "",
             precio: ""
         });
@@ -226,6 +273,7 @@ export default function Admin() {
     };
 
 
+    //submit para creaor o editar tip
     const handleSubmitTips = async (e) => {
         e.preventDefault();
 
@@ -238,7 +286,7 @@ export default function Admin() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(formTips)
+            credentials: "include",
         });
 
         const data = await res.json();
@@ -251,7 +299,8 @@ export default function Admin() {
         setFormTips({
             titulo: "",
             subtitulo: "",
-            texto: ""
+            descripcion: "",
+            icono_clase: ""
         });
 
         setEditandoTipsId(null);
@@ -261,17 +310,19 @@ export default function Admin() {
 
     return (
         <div className="admin-page">
-            <div className="badge">
+            <div className="badge holder">
                 Panel Administrador
+                <button className="btn btn-logout" onClick={() => { localStorage.removeItem("adminLogueado"); localStorage.removeItem("usuario"); router.push("/admin/login"); }}> Cerrar sesión</button>
             </div>
 
-            <div className="admin-card añadir">
+
+            <div className="admin-card añadir añadir-destino holder">
                 <div className="admin-card-header">
                     <h1>Crear Destino</h1>
                     <p>Completá los campos para publicar un nuevo destino</p>
                 </div>
 
-                <div className="admin-card-body card-destinos">
+                <div className="admin-card-body">
                     <form onSubmit={handleSubmitDestino}>
 
                         <div className="form-destino">
@@ -319,7 +370,14 @@ export default function Admin() {
                                             <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                                         </svg>
                                     </span>
-                                    <input name="tipo_destino" placeholder="Tipo de destino" onChange={handleChangeDestino} required />
+                                    <select name="tipo_id" value={formDestino.tipo_id} onChange={handleChangeDestino} required>
+                                        <option value="">Seleccionar tipo</option>
+                                        {tiposDestino.map(tipo => (
+                                            <option key={tipo.id} value={tipo.id}>
+                                                {tipo.nombre}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
 
@@ -348,6 +406,84 @@ export default function Admin() {
 
                     </form>
                 </div>
+            </div>
+
+
+            <div className="admin-card eliminar-detalles holder">
+                <div className="admin-card-header">
+                    <h1>Destinos existentes</h1>
+                    <p>Puede eliminar o editar el Destino seleccionado</p>
+                </div>
+
+                <div className="admin-card-body">
+                    {destinos.map(destino => (
+                        <div className="destino-linea" key={destino.id}>
+                            <strong className="nombre-destino">{destino.nombre}</strong>
+                            <div className="botones-destino">
+                                <button onClick={() => eliminarDestino(destino.id)} className="btn-eliminar">
+                                    Eliminar
+                                </button>
+                                <button onClick={() => iniciarEdicionDestino(destino)} className="btn-editar">
+                                    Editar
+                                </button>
+                            </div>
+
+                            {editandoDestinoId === destino.id && (
+                                <div className="form-editar">
+                                    <button type="button" className="btn-cerrar" onClick={() => setEditandoDestinoId(null)}>
+                                        ✕
+                                    </button>
+                                    <div className="campo">
+                                        <label htmlFor="nombre">Nombre del destino</label>
+                                        <input name="nombre" value={formEditarDestino.nombre} onChange={handleChangeEditarDestino} />
+                                    </div>
+
+                                    <div className="campo">
+                                        <label htmlFor="tipo_destino">Tipo de destino</label>
+                                        <select name="tipo_id" value={formEditarDestino.tipo_id} onChange={handleChangeEditarDestino} required>
+                                            <option value="">Seleccionar tipo</option>
+                                            {tiposDestino.map(tipo => (
+                                                <option key={tipo.id} value={tipo.id}>
+                                                    {tipo.nombre}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+
+                                    <div className="campo campo-full">
+                                        <label htmlFor="descripcion">Descripción del destino</label>
+                                        <input name="descripcion" value={formEditarDestino.descripcion} onChange={handleChangeEditarDestino} />
+                                    </div>
+
+                                    <div className="campo">
+                                        <label htmlFor="tiempo">Duración estimada</label>
+                                        <input name="tiempo" value={formEditarDestino.tiempo} onChange={handleChangeEditarDestino} />
+                                    </div>
+
+                                    <div className="campo">
+                                        <label htmlFor="precio">Precio</label>
+                                        <div className="input-group">
+                                            <span className="icon">$</span>
+                                            <input name="precio" value={formEditarDestino.precio} onChange={handleChangeEditarDestino} />
+                                        </div>
+                                    </div>
+
+                                    <button onClick={() => actualizarDestino(destino.id)} className="btn-guardar">
+                                        Guardar datos
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+
+            <div className="admin-card añadir añadir-tips holder">
+                <div className="admin-card-header">
+                    <h1>Crear Tip</h1>
+                    <p>Completá los campos para publicar un nuevo tip</p>
+                </div>
 
                 <div className="admin-card-body card-tips">
                     <form onSubmit={handleSubmitTips}>
@@ -370,6 +506,25 @@ export default function Admin() {
                                 <div className="input-group">
                                     <span className="icon">
                                         <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                            <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                        </svg>
+                                    </span>
+                                    <select name="icono_id" value={formTips.icono_id} onChange={handleChangeTips} >
+                                        <option value="">Seleccionar icono</option>
+                                        {iconos.map(icono => (
+                                            <option key={icono.id} value={icono.id}>
+                                                {icono.nombre}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="campo campo-full">
+                                <label htmlFor="subtitulo">Subtitulo</label>
+                                <div className="input-group">
+                                    <span className="icon">
+                                        <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                                             <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                                         </svg>
                                     </span>
@@ -378,14 +533,14 @@ export default function Admin() {
                             </div>
 
                             <div className="campo campo-full">
-                                <label htmlFor="texto">Texto</label>
+                                <label htmlFor="descripcion">Descripcion</label>
                                 <div className="input-group">
                                     <span className="icon">
                                         <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
                                             <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                                         </svg>
                                     </span>
-                                    <input name="texto" placeholder="Texto" onChange={handleChangeTips} required />
+                                    <input name="descripcion" placeholder="Descripcion" onChange={handleChangeTips} required />
                                 </div>
                             </div>
                         </div>
@@ -395,115 +550,58 @@ export default function Admin() {
                 </div>
             </div>
 
-            <div className="admin-card eliminar-detalles">
+            <div className="admin-card eliminar-tips holder">
                 <div className="admin-card-header">
-                    <h1>Destinos existentes</h1>
-                    <p>Puede eliminar o editar el Destino seleccionado</p>
+                    <h1>Tips existentes</h1>
+                    <p>Puede eliminar o editar el Tip seleccionado</p>
                 </div>
 
                 <div className="admin-card-body">
-                    {destinos.map(destino => (
-                        <div className="destino-linea" key={destino.id}>
-                            <strong className="nombre-destino">{destino.nombre}</strong>
+                    {tips.map(tips => (
+                        <div className="destino-linea" key={tips.id}>
+                            <strong className="nombre-destino">{tips.titulo}</strong>
                             <div className="botones-destino">
-                                <button onClick={() => eliminarDestino(destino.id)} className="btn-eliminar">
+                                <button onClick={() => eliminarTips(tips.id)} className="btn-eliminar">
                                     Eliminar
                                 </button>
-                                <button onClick={() => iniciarEdicion(destino)} className="btn-editar">
+                                <button onClick={() => iniciarEdicionTips(tips)} className="btn-editar">
                                     Editar
                                 </button>
                             </div>
 
-                            {editandoId === destino.id && (
+                            {editandoTipsId === tips.id && (
                                 <div className="form-editar">
-                                    <div className="campo">
-                                        <label htmlFor="nombre">Nombre del destino</label>
-                                        <input name="nombre" value={formEditar.nombre} onChange={handleChangeEditar} />
-                                    </div>
-
-                                    <div className="campo">
-                                        <label htmlFor="tipo_destino">Tipo de destino</label>
-                                        <input name="tipo_destino" value={formEditar.tipo_nombre} onChange={handleChangeEditar} />
-                                    </div>
-
-                                    <div className="campo campo-full">
-                                        <label htmlFor="descripcion">Descripción del destino</label>
-                                        <input name="descripcion" value={formEditar.descripcion} onChange={handleChangeEditar} />
-                                    </div>
-
-                                    <div className="campo">
-                                        <label htmlFor="tiempo">Duración estimada</label>
-                                        <input name="tiempo" value={formEditar.tiempo} onChange={handleChangeEditar} />
-                                    </div>
-
-                                    <div className="campo">
-                                        <label htmlFor="precio">Precio</label>
-                                        <div className="input-group">
-                                            <span className="icon">$</span>
-                                            <input name="precio" value={formEditar.precio} onChange={handleChangeEditar} />
-                                        </div>
-                                    </div>
-
-                                    <button onClick={() => actualizarDestino(destino.id)} className="btn-guardar">
-                                        Guardar datos
+                                    <button type="button" className="btn-cerrar" onClick={() => setEditandoTipsId(null)}>
+                                        ✕
                                     </button>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-            
-            <div className="admin-card eliminar-tips">
-                <div className="admin-card-header">
-                    <h1>Destinos existentes</h1>
-                    <p>Puede eliminar o editar el Destino seleccionado</p>
-                </div>
-
-                <div className="admin-card-body">
-                    {destinos.map(destino => (
-                        <div className="destino-linea" key={destino.id}>
-                            <strong className="nombre-destino">{destino.nombre}</strong>
-                            <div className="botones-destino">
-                                <button onClick={() => eliminarDestino(destino.id)} className="btn-eliminar">
-                                    Eliminar
-                                </button>
-                                <button onClick={() => iniciarEdicion(destino)} className="btn-editar">
-                                    Editar
-                                </button>
-                            </div>
-
-                            {editandoId === destino.id && (
-                                <div className="form-editar">
                                     <div className="campo">
-                                        <label htmlFor="nombre">Nombre del destino</label>
-                                        <input name="nombre" value={formEditar.nombre} onChange={handleChangeEditar} />
+                                        <label htmlFor="titulo">Titulo del Tip</label>
+                                        <input name="titulo" value={formEditarTips.titulo} onChange={handleChangeEditarTips} />
                                     </div>
 
                                     <div className="campo">
-                                        <label htmlFor="tipo_destino">Tipo de destino</label>
-                                        <input name="tipo_destino" value={formEditar.tipo_nombre} onChange={handleChangeEditar} />
+                                        <label htmlFor="icono_clase">Icono</label>
+                                        <select className="select-editar" name="icono_id" value={formEditarTips.icono_id} onChange={handleChangeEditarTips} >
+                                            <option value="">Seleccionar icono</option>
+                                            {iconos.map(icono => (
+                                                <option key={icono.id} value={icono.id}>
+                                                    {icono.nombre}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
 
                                     <div className="campo campo-full">
-                                        <label htmlFor="descripcion">Descripción del destino</label>
-                                        <input name="descripcion" value={formEditar.descripcion} onChange={handleChangeEditar} />
+                                        <label htmlFor="subtitulo">Subtitulo del Tip</label>
+                                        <input name="subtitulo" value={formEditarTips.subtitulo} onChange={handleChangeEditarTips} />
                                     </div>
 
-                                    <div className="campo">
-                                        <label htmlFor="tiempo">Duración estimada</label>
-                                        <input name="tiempo" value={formEditar.tiempo} onChange={handleChangeEditar} />
+                                    <div className="campo campo-full">
+                                        <label htmlFor="descripcion">Descripcion</label>
+                                        <input name="descripcion" value={formEditarTips.descripcion} onChange={handleChangeEditarTips} />
                                     </div>
 
-                                    <div className="campo">
-                                        <label htmlFor="precio">Precio</label>
-                                        <div className="input-group">
-                                            <span className="icon">$</span>
-                                            <input name="precio" value={formEditar.precio} onChange={handleChangeEditar} />
-                                        </div>
-                                    </div>
-
-                                    <button onClick={() => actualizarDestino(destino.id)} className="btn-guardar">
+                                    <button onClick={() => actualizarTips(tips.id)} className="btn-guardar">
                                         Guardar datos
                                     </button>
                                 </div>

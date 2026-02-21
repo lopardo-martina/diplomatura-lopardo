@@ -40,9 +40,9 @@ export default function Destinos() {
               key={destino.id}
               id={destino.id}
               nombre={destino.nombre}
-              texto={destino.descripcion}
+              descripcion={destino.descripcion}
               imagen={`/img/${destino.imagen}`}
-              tipo_destino={destino.tipo_nombre}
+              tipo_nombre={destino.tipo_nombre}
               tiempo={destino.tiempo}
               precio={destino.precio}
             />

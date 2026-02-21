@@ -6,7 +6,7 @@
   flex: 1;
 }
 
-.section-header {
+.section-header { 
   text-align: center;
   margin-bottom: 60px;
 }
@@ -35,7 +35,8 @@
 }
 
 .formulario input,
-.formulario textarea {
+.formulario textarea,
+.campo input {
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 12px;
